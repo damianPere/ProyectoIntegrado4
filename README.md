@@ -35,7 +35,7 @@ Las tecnologías involucradas son:
 
 ## Instalación
 
-En windows, instalar el siguiente programa:
+En windows, instalar los siguientes programas:
  1. [Python 3.9](https://apps.microsoft.com/detail/9p7qfqmjrfp7?hl=es-MX&gl=MX)
  2. [Git](https://git-scm.com/download/win)
  3. [Vscode](https://code.visualstudio.com/download)
