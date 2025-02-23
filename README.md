@@ -36,9 +36,9 @@ Las tecnologías involucradas son:
 ## Instalación
 
 En windows, instalar el siguiente programa:
- 1- [Python 3.9](https://apps.microsoft.com/detail/9p7qfqmjrfp7?hl=es-MX&gl=MX)
- 2- [Git](https://git-scm.com/download/win)
- 2- [Vscode](https://code.visualstudio.com/download)
+ 1. [Python 3.9](https://apps.microsoft.com/detail/9p7qfqmjrfp7?hl=es-MX&gl=MX)
+ 2. [Git](https://git-scm.com/download/win)
+ 3. [Vscode](https://code.visualstudio.com/download)
 
  Luego desde el vscode presionar Ctrl + J para abrir la terminal, ya con la terminal abierta ejecutar el siguiente comando:
 
