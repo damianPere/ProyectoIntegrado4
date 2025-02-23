@@ -15,7 +15,7 @@ Básicamente, quieren entender cuánto ingresaron por año, cuáles fueron las c
 
 Vas a usar datos de dos fuentes:
 
-1. La primera es un conjunto de datos público de pedidos de comercio electrónico en Brasil, provenientes de la tienda Olist, proporcionado en archivos CSV. Estos son datos comerciales reales, que han sido anonimizados. El conjunto de datos contiene información sobre 100,000 pedidos realizados entre 2016 y 2018 en varios marketplaces en Brasil. Sus características permiten ver los pedidos desde múltiples dimensiones: desde el estado del pedido, precio, pago y desempeño logístico, hasta la ubicación del cliente, atributos del producto y finalmente las reseñas escritas por los clientes. Encontrarás una imagen con el esquema de la base de datos en `images/data_schema.png`.  
+1. La primera es un conjunto de datos público de pedidos de comercio electrónico en Brasil, provenientes de la tienda Olist, proporcionado en archivos CSV. Estos son datos comerciales reales, que han sido anonimizados. El conjunto de datos contiene información sobre 100,000 pedidos realizados entre 2016 y 2018 en varios marketplaces en Brasil. Sus características permiten ver los pedidos desde múltiples dimensiones: desde el estado del pedido, precio, pago y desempeño logístico, hasta la ubicación del cliente, atributos del producto y finalmente las reseñas escritas por los clientes. Encontrarás una imagen con el esquema de la base de datos en `images/data_schema.png`.
    Para obtener el conjunto de datos, descárgalo desde este [enlace](https://drive.google.com/file/d/1HIy4LNNQESuXUj-u_mNJTCGCRrCeSbo-/view?usp=share_link), extrae la carpeta `dataset` del archivo `.zip` y colócala en la carpeta raíz del proyecto. Consulta el archivo `ASSIGNMENT.md`, sección **Estructura del Proyecto**, para validar que has ubicado el conjunto de datos correctamente.
 
 2. La segunda fuente es una API pública: https://date.nager.at. La usarás para obtener información sobre los días festivos en Brasil y correlacionarlos con ciertas métricas sobre la entrega de productos.
@@ -35,13 +35,24 @@ Las tecnologías involucradas son:
 
 ## Instalación
 
-Se proporciona un archivo `requirements.txt` con todas las bibliotecas de Python necesarias para ejecutar este proyecto. Para instalar las dependencias, ejecuta:
+En windows, instalar el siguiente programa:
+ 1- [Python 3.9](https://apps.microsoft.com/detail/9p7qfqmjrfp7?hl=es-MX&gl=MX)
+ 2- [Git](https://git-scm.com/download/win)
+ 2- [Vscode](https://code.visualstudio.com/download)
+
+ Luego desde el vscode presionar Ctrl + J para abrir la terminal, ya con la terminal abierta ejecutar el siguiente comando:
 
 ```console
-$ pip install -r requirements.txt
+py -3.9 -m pip install -r requirements.txt
+```
+Luego para corroborar que esta todo bien instalado, ejecutar el siguiente comando
+
+```console
+ py -3.9 -m pytest -s tests/test_extract.py
 ```
 
-*Nota:* Se recomienda instalar las dependencias dentro de un entorno virtual.
+Si las 3 pruebas de ese archivo corrieron con exito entonces esta todo bien y ya se puede ejecutar los archivos del Project.ipynb
+
 
 ## Estilo de Código
 
@@ -68,4 +79,3 @@ $ pytest tests/
 Si deseas aprender más sobre cómo probar código en Python, revisa:
 - [Effective Python Testing With Pytest](https://realpython.com/pytest-python-testing/)
 - [The Hitchhiker’s Guide to Python: Testing Your Code](https://docs.python-guide.org/writing/tests/)
-
