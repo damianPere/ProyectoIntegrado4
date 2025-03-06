@@ -179,10 +179,19 @@ def plot_freight_value_weight_relationship(df: DataFrame):
     Args:
         df (DataFrame): Dataframe with freight value weight relationship query result
     """
-    # TODO: Representar gráficamente la relación entre el valor del flete y el peso usando un scatterplot de seaborn.
-    # El eje x debe ser el peso (weight) y el eje y debe ser el valor del flete (freight value).
+    sns.set_style("whitegrid")
 
-    raise NotImplementedError
+    # Create a scatterplot with seaborn
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(data=df, x="product_weight_g", y="freight_value", alpha=0.6)
+
+    # Set plot title and labels
+    plt.title("Freight Value vs. Product Weight")
+    plt.xlabel("Product Weight (g)")
+    plt.ylabel("Freight Value")
+
+    # Show the plot
+    plt.show()
 
 
 def plot_delivery_date_difference(df: DataFrame):
