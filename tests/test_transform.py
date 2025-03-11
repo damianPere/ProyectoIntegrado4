@@ -202,10 +202,7 @@ def test_query_orders_per_day_and_holidays_2017(database: Engine):
 
 
 def test_query_get_freight_value_weight_relationship(database: Engine):
-    # TODO -> Obtener el json de este test
-    # query_name = "get_freight_value_weight_relationship"
-    # actual: QueryResult = query_freight_value_weight_relationship(database)
-    # expected = read_query_result(query_name)
-    # print(pandas_to_json_object(actual.result))
-    # assert pandas_to_json_object(actual.result) == expected
-    assert True == True
+    query_name = "get_freight_value_weight_relationship"
+    actual: QueryResult = query_freight_value_weight_relationship(database)
+    expected = read_query_result(query_name)
+    assert pandas_to_json_object(actual.result) == expected
