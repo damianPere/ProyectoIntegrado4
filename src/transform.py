@@ -1,3 +1,5 @@
+import sys
+import os
 from collections import namedtuple
 from enum import Enum
 from typing import Callable, Dict, List
@@ -6,6 +8,9 @@ import pandas as pd
 from pandas import DataFrame, read_sql, to_datetime, merge
 from sqlalchemy import text
 from sqlalchemy.engine.base import Engine
+
+# Agrega el directorio 'proyecto_integrador' al path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from src.config import QUERIES_ROOT_PATH
 

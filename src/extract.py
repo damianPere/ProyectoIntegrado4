@@ -1,6 +1,12 @@
+import sys
+import os
 from typing import Dict
 import requests
 from pandas import DataFrame, read_csv, read_json, to_datetime
+
+# Agrega el directorio 'proyecto_integrador' al path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 
 from src.config import PUBLIC_HOLIDAYS_URL
 
