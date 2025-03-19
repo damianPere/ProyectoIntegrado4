@@ -1,10 +1,13 @@
 import matplotlib
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+
 
 import plotly.express as px
 import seaborn as sns
 
 from pandas import DataFrame
+import pandas as pd
 
 
 def plot_revenue_by_month_year(df: DataFrame, year: int):
@@ -14,16 +17,33 @@ def plot_revenue_by_month_year(df: DataFrame, year: int):
         df (DataFrame): Dataframe with revenue by month and year query result
         year (int): It could be 2016, 2017 or 2018
     """
+    # Crear una copia del DataFrame para no modificar el original
+    plot_df = df.copy()
+
+    # Convertir la columna del año solicitado a tipo numérico
+    year_column = f"Year{year}"
+    plot_df[year_column] = pd.to_numeric(plot_df[year_column], errors="coerce")
+
     matplotlib.rc_file_defaults()
     sns.set_style(style=None, rc=None)
 
     _, ax1 = plt.subplots(figsize=(12, 6))
 
-    sns.lineplot(data=df[f"Year{year}"], marker="o", sort=False, ax=ax1)
+    # Usar month_no para el orden pero mostrar los nombres de los meses
+    sns.lineplot(
+        data=plot_df, x="month_no", y=year_column, marker="o", sort=False, ax=ax1
+    )
     ax2 = ax1.twinx()
 
-    sns.barplot(data=df, x="month", y=f"Year{year}", alpha=0.5, ax=ax2)
+    sns.barplot(data=plot_df, x="month_no", y=year_column, alpha=0.5, ax=ax2)
+
+    # Configurar las etiquetas del eje x para mostrar los nombres de meses
+    ax1.set_xticks(range(len(plot_df)))
+    ax1.set_xticklabels(plot_df["month"])
+
     ax1.set_title(f"Revenue by month in {year}")
+    ax1.set_xlabel("Month")
+    ax1.set_ylabel("Revenue")
 
     plt.show()
 
@@ -209,10 +229,44 @@ def plot_order_amount_per_day_with_holidays(df: DataFrame):
     """Plot order amount per day with holidays
 
     Args:
-        df (DataFrame): Dataframe with order amount per day with holidays query result
+        df (DataFrame): Dataframe with order count per day with holidays
     """
-    # TODO: Graficar el monto de pedidos por día con los días festivos usando matplotlib.
-    # Marcar los días festivos con líneas verticales.
-    # Sugerencia: usar plt.axvline.
 
-    raise NotImplementedError
+    # Primero nos Aseguramos de que la columna de fechas esté en formato datetime
+    if not pd.api.types.is_datetime64_any_dtype(df["date"]):
+        df["date"] = pd.to_datetime(df["date"])
+
+    # Luego creamos la figura y el eje
+    fig, ax = plt.subplots(figsize=(14, 7))
+
+    # Despues graficamos la cantidad de pedidos por día - línea verde sin marcadores
+    ax.plot(df["date"], df["order_count"], color="green", linewidth=2)
+
+    # Ahora crearemos una variable para identificar los días festivos
+    holidays = df[df["holiday"] == True]
+
+    # Luego marcamos los días festivos con líneas verticales azules punteadas
+    for holiday_date in holidays["date"]:
+        ax.axvline(x=holiday_date, color="blue", linestyle=":", alpha=0.7)
+
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
+
+    # Aqui ajustamos la densidad de las etiquetas de fecha para que las etiquetas de fecha se muestren cada 2 meses
+    ax.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
+    ax.grid(False)
+
+    # Establecer límites para los ejes
+    ax.set_ylim(bottom=0, top=1200)
+
+    # Quitamos luego el título y etiquetas
+    plt.title("")
+    plt.xlabel("")
+    plt.ylabel("")
+
+    # Luego aplicamos un ajuste al diseño para asegurar que todo sea visible
+    plt.tight_layout()
+
+    # Y finalmente mostramos el gráfico
+    plt.show()
+
+    return fig, ax
