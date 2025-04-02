@@ -6,9 +6,9 @@ from datetime import datetime, timedelta
 # Definir argumentos por defecto
 default_args = {
     "owner": "airflow",
-    "start_date": datetime(2023, 1, 1),  # Fecha en el pasado
+    "start_date": datetime(2025, 4, 1),
     "retries": 1,
-    "retry_delay": timedelta(minutes=5),
+    "retry_delay": timedelta(minutes=2),
 }
 
 # Crear el DAG
