@@ -1,4 +1,4 @@
-## Integarntes
+## Integrantes
 
 - Damian Jesus Perez Salvatierra
 - Yilma Valeria Espitia Sanabria
