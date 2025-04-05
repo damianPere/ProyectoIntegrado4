@@ -1,3 +1,8 @@
+## Integarntes
+
+- Damian Jesus Perez Salvatierra
+- Yilma Valeria Espitia Sanabria
+
 # Proyecto Integrador IV
 > Pipeline de Datos de E-Commerce
 
